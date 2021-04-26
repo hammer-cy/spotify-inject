@@ -17,12 +17,18 @@ if os.name == "nt":
 path = 'spotify'
 if windows:
     home = os.path.expanduser('~')
-    path = os.path.join(home, 'AppData', 'Roaming', 'Spotify', '\Spotify.exe')
+    print(home)
+    path = os.path.join(home, 'AppData', 'Roaming', 'Spotify', 'Spotify.exe')
+    print(path)
 
 subprocess.Popen([path, f"--remote-debugging-port={port}"])
 
 time.sleep(5)
 
+# if windows:
+#     with open(os.path.join(os.path.dirname(sys.argv[0]), 'style.css')) as file:
+#         stylesheet = file.read()
+# else:
 with open('style.css', 'r') as file:
     stylesheet = file.read()
 
