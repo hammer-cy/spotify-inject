@@ -17,11 +17,9 @@ if os.name == "nt":
 path = 'spotify'
 if windows:
     home = os.path.expanduser('~')
-    print(home)
     path = os.path.join(home, 'AppData', 'Roaming', 'Spotify', 'Spotify.exe')
-    print(path)
 
-subprocess.Popen([path, f"--remote-debugging-port={port}"])
+subprocess.Popen([path, f"--remote-debugging-port={port}"], shell=True)
 
 time.sleep(5)
 
