@@ -14,12 +14,14 @@ port = 9222
 if os.name == "nt":
     windows = True
 
-print("launching spotify")
+path = 'spotify'
 if windows:
-    print("windows")
-else:
-    p = subprocess.Popen(["spotify", f"--remote-debugging-port={port}"])
-    time.sleep(5)
+    home = os.path.expanduser('~')
+    path = os.path.join(home, 'AppData', 'Roaming', 'Spotify', '\Spotify.exe')
+
+subprocess.Popen([path, f"--remote-debugging-port={port}"])
+
+time.sleep(5)
 
 with open('style.css', 'r') as file:
     stylesheet = file.read()
