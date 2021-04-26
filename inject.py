@@ -8,20 +8,16 @@ import json
 data = requests.get('http://localhost:9222/json').json()
 ws_uri = data[0]['webSocketDebuggerUrl']
 
-script = """
-var cssId = 'myCss';  // you could encode the css path itself to generate id..
-if (!document.getElementById(cssId))
-{
-    var head  = document.getElementsByTagName('head')[0];
-    var link  = document.createElement('link');
-    link.id   = cssId;
-    link.rel  = 'stylesheet';
-    link.type = 'text/css';
-    link.href = 'https://raw.githubusercontent.com/hammer-cy/spotify-inject/main/style.css';
-    //link.media = 'all';
-    head.appendChild(link);
-}
-console.log('injected css!');
+with open('style.css', 'r') as file:
+    stylesheet = file.read()
+
+print(stylesheet)
+
+script = f"""
+var style  = document.createElement('style');
+style.textContent = `{stylesheet}`;
+document.head.append(style);
+console.log('css injected!');
 """
 
 payload = {

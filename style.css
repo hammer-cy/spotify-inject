@@ -1,4 +1,6 @@
-/* maybe it needs a comment here? */
-.now-playing-bar-container {
-	background-color: red;
+button[title^="Upgrade"] {
+	display: none;
+}
+.b2731cdeb97c1f6a4cf5caa44e943acb-scss {
+	display: none;
 }
