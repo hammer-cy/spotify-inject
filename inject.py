@@ -20,7 +20,9 @@ if (!document.getElementById(cssId))
     link.href = 'https://raw.githubusercontent.com/hammer-cy/spotify-inject/main/style.css';
     link.media = 'all';
     head.appendChild(link);
-}"""
+}
+console.log('injected css!');
+"""
 
 payload = {
     'id': 69420,
